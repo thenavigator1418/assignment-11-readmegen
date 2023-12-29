@@ -2,10 +2,10 @@ const fs = require("fs");
 const path = require('path');
 const inquirer = require("inquirer");
 const generateMarkdown = require("./utils/generateMarkdown");
+const fileName = "yourReadMe.md";
 
 // array of questions for user
-const questions = () => {
-    return inquirer.createPromptModule([
+const questions = [
     {
         type: 'input',
       name: 'projName',
@@ -45,17 +45,20 @@ const questions = () => {
         type: 'input',
         name: 'questions',
         message: 'Provide your Github username so users can contact you if they have additional questions',
-      },
-    ]);
-}
+      }];
 
 // function to write README file
-function writeToFile(fileName, data) {
+function writeToFile(data) {
+    fs.writeFileSync(data, 'utf8');
+    console.log(`Your new file has been created!`);
 }
 
 // function to initialize program
 function init() {
-
+    inquirer.prompt(questions).then((answers) => {
+        const markdownContent = generateMarkdown(answers);
+        writeToFile(fileName, markdownContent);
+    });
 }
 
 // function call to initialize program

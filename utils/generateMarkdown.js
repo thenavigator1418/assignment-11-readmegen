@@ -1,27 +1,27 @@
 // function to generate markdown for README
-function generateMarkdown(data) {
-  return `# ${projName}
+function generateMarkdown(answers) {
+  return `# ${answers.projName}
 
   ## Description
-  ${data.projDesc}
+  ${answers.projDesc}
 
   ## Installation
-  ${data.install}
+  ${answers.install}
 
   ## Usage
-  ${data.usage}
+  ${answers.usage}
 
   ## License
-  ${data.license}
+  ${answers.license}
 
   ## Contributions & Credits
-  ${data.credits}
+  ${answers.credits}
 
   ## Testing
-  ${data.test}
+  ${answers.test}
 
   ## Questions
-  Please contact me on my Github, my username is ${data.questions}.
+  Please contact me on my Github, my username is ${answers.questions}.
 `;
 }
 
