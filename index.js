@@ -57,7 +57,7 @@ function writeToFile(data) {
 function init() {
     inquirer.prompt(questions).then((answers) => {
         const markdownContent = generateMarkdown(answers);
-        writeToFile(fileName, markdownContent);
+        fs.writeFileSync(fileName, markdownContent);
     });
 }
 
